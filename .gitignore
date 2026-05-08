@@ -1,17 +1,32 @@
-# Dados - Nunca subir datasets brutos ou sensíveis
+# === Dados e Privacidade ===
+# Nunca subir datasets brutos, sensíveis ou processados
 data/
 *.csv
 *.xlsx
 *.json
+*.parquet
+*.pdf
 
-# Python - Arquivos temporários e ambientes virtuais
+# === Python - Ambientes Virtuais e Cache ===
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
 __pycache__/
 *.py[cod]
 *$py.class
-venv/
-.env
-.ipynb_checkpoints/
 
-# Sistema - Arquivos inúteis de sistema operacional
+# === Jupyter Notebooks ===
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# === Configurações de IDE e Sistema ===
+.vscode/
+.idea/
+.env
 .DS_Store
 Thumbs.db
+desktop.ini
