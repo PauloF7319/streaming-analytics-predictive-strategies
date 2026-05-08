@@ -1,0 +1,17 @@
+# Dados - Nunca subir datasets brutos ou sensíveis
+data/
+*.csv
+*.xlsx
+*.json
+
+# Python - Arquivos temporários e ambientes virtuais
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.ipynb_checkpoints/
+
+# Sistema - Arquivos inúteis de sistema operacional
+.DS_Store
+Thumbs.db
