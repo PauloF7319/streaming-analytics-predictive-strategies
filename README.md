@@ -14,6 +14,26 @@ To make this project truly "fit for purpose," I’ve set out to tackle five crit
 4.  **Retention Segments:** Which customer cohorts are the "bread and butter" of our Lifetime Value (LTV)?
 5.  **Predictive Strategy:** How can predictive analytics "lend a hand" in sharpening our recommendation engines?
 
+## 🚧 Strategic Scope & Boundaries (The "Professional Reality" Check)
+
+Executive Note: In a large scale production environment, a project of this scale would involve months of academic research. To maintain focus on delivering immediate business value and demonstrating pipeline integrity, the following strategic boundaries have been set for this portfolio:
+
+•	Focus on Predictive Outcomes: I am prioritising "Deployment Ready" logic over an academic thesis comparing frequentist vs. bayesian statistics.
+•	Pragmatic Model Selection: While I have selected robust algorithms, I am bypassing exhaustive 'Grid Search' benchmarking to focus on Data Governance and Pipeline Reliability.
+•	Purpose Driven EDA: Every chart and analysis here is strictly tied to a Business Requirement. I am avoiding "exploration for exploration's sake" to maintain a lean, high impact analytical layer.
+•	System Integrity vs. Hyper Tuning: The focus remains on the End to End Architecture. Chasing a 0.1% increase in accuracy is deferred in favour of ensuring a "ship shape" data lineage and auditability.
+
+## 🎯 The Gold Standard: Accuracy & Validation 
+To ensure the predictive engine is "fit for purpose" and provides reliable support for executive decision making, I have set a **95% minimum accuracy** threshold for the Machine Learning models. Achieving this "Gold Standard" is only possible through the rigorous data cleansing and feature engineering described in my pipeline, ensuring the model learns from high integrity signals, not noise.
+
+### 🔐 Data Governance & GDPR Compliance (The "Safe Hands" Protocol)
+To align with UK GDPR standards and ensure public-sector levels of data security, the pipeline implements a strict **Anonymisation Layer** before any data reaches the 'Processed' stage:
+
+* **Pseudonymisation:** `User_ID` fields are transformed via **SHA-256 Hashing**, ensuring unique tracking for ML without exposing real user identities.
+* **PII Scrubbing:** All Personally Identifiable Information (Names, Emails, Addresses) is systematically removed from the refined datasets.
+* **Deep Cleaning:** Automated removal of duplicates, normalization of characters, and median-based imputation to eliminate noise and protect the **95% accuracy target**.
+
+
 ## 🏗️ Strategic Data Management & Architecture
 For this project, I’ve implemented a professional data pipeline that prioritises efficiency and security:
 
@@ -29,6 +49,12 @@ I've utilised the **Python** ecosystem to build a solution that is both robust a
 
 > **🔒 A Note on Data Privacy & Governance:**
 > Privacy is "top of mind" here. This project implements a rigorous layer of anonymisation. All names, addresses, and personal identifiers have been "binned" or replaced with cryptographic keys. This ensures the analysis focuses strictly on **mass patterns**, staying well within the lines of proper data governance and ethics—essential for any work involving public-facing or sensitive sectors.
+
+## 🔐 GDPR Compliance & Data Anonymisation To align with UK GDPR standards, this pipeline implements a strict anonymisation layer before data reaches the 'Processed' (Silver) stage.
+•	User Pseudonymisation: Personal identifiers are hashed using SHA-256 protocols.
+•	PII Scrubbing: Direct identifiers (Names, Emails) are systematically removed.
+•	Data Minimisation: Only behavioural features relevant to Churn and Engagement are retained, ensuring the "Right to Privacy" is upheld while maintaining high quality predictive signals.
+
 
 ---
 **Developed by [Paulo Faria]**
