@@ -18,10 +18,10 @@ To make this project truly "fit for purpose," I’ve set out to tackle five crit
 
 Executive Note: In a large scale production environment, a project of this scale would involve months of academic research. To maintain focus on delivering immediate business value and demonstrating pipeline integrity, the following strategic boundaries have been set for this portfolio:
 
-•	Focus on Predictive Outcomes: I am prioritising "Deployment Ready" logic over an academic thesis comparing frequentist vs. bayesian statistics.
-•	Pragmatic Model Selection: While I have selected robust algorithms, I am bypassing exhaustive 'Grid Search' benchmarking to focus on Data Governance and Pipeline Reliability.
-•	Purpose Driven EDA: Every chart and analysis here is strictly tied to a Business Requirement. I am avoiding "exploration for exploration's sake" to maintain a lean, high impact analytical layer.
-•	System Integrity vs. Hyper Tuning: The focus remains on the End to End Architecture. Chasing a 0.1% increase in accuracy is deferred in favour of ensuring a "ship shape" data lineage and auditability.
+*•*	Focus on Predictive Outcomes: I am prioritising "Deployment Ready" logic over an academic thesis comparing frequentist vs. bayesian statistics.
+*•*	Pragmatic Model Selection: While I have selected robust algorithms, I am bypassing exhaustive 'Grid Search' benchmarking to focus on Data Governance and Pipeline Reliability.
+*•*	Purpose Driven EDA: Every chart and analysis here is strictly tied to a Business Requirement. I am avoiding "exploration for exploration's sake" to maintain a lean, high impact analytical layer.
+*•*	System Integrity vs. Hyper Tuning: The focus remains on the End to End Architecture. Chasing a 0.1% increase in accuracy is deferred in favour of ensuring a "ship shape" data lineage and auditability.
 
 ## 🎯 The Gold Standard: Accuracy & Validation 
 To ensure the predictive engine is "fit for purpose" and provides reliable support for executive decision making, I have set a **95% minimum accuracy** threshold for the Machine Learning models. Achieving this "Gold Standard" is only possible through the rigorous data cleansing and feature engineering described in my pipeline, ensuring the model learns from high integrity signals, not noise.
