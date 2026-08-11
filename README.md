@@ -1,68 +1,90 @@
-📺 Streaming Analytics: Predictive Strategies for Retention & Engagement
-🧠 The Business Case
-In the cut throat world of digital streaming, data is the difference between "getting it right" and losing your audience to the competition. This project isn't just about "crunching numbers"; it's about converting user behaviour into actionable insights.
+📺 Streaming Analytics – Predictive Strategies for Retention & Engagement
+Business Context
 
-My approach here was to treat every row of data with the professional "care and kit" it deserves. By applying Machine Learning to anticipate market shifts, I've focused on ensuring the user experience remains the primary engine for revenue growth. I'm not just looking at the "what," but the "why" behind the data.
+This project explores how customer behaviour data can be used to understand engagement, customer retention and subscription patterns in a streaming environment.
 
-🎯 The Challenge: Business Questions
-To make this project truly "fit for purpose," I’ve set out to tackle five critical pillars that define the success of any streaming platform:
+The main objective was to build a data and machine learning workflow that could help answer practical business questions rather than focusing only on the technical aspects of the models.
 
-Churn Prediction: Which users are most likely to "call it a day" and cancel?
+The project looks at:
 
-Engagement Drivers: Which content genres actually keep viewers glued to their screens?
+Which users are more likely to cancel their subscriptions?
+Which content genres are associated with higher engagement?
+Can user behaviour help identify customers likely to upgrade to a Premium plan?
+Which customer groups show stronger retention characteristics?
+How can predictive analytics support better retention and recommendation strategies?
 
-Upgrade Patterns: Can behavioural habits predict when a user is "chuffed" enough to move to a Premium plan?
+🎯 Project Scope
+I focused on building an end-to-end analytical workflow, from the original data through data preparation, analysis and predictive modelling.
 
-Retention Segments: Which customer cohorts are the "bread and butter" of our Lifetime Value (LTV)?
+The project was intentionally kept focused on the main business questions. Instead of trying to optimise every possible aspect of the models, I concentrated on building a reliable pipeline, maintaining clear data lineage and making sure that the results could be properly analysed.
 
-Predictive Strategy: How can predictive analytics "lend a hand" in sharpening our recommendation engines?
+Some areas, such as extensive hyperparameter optimisation and more advanced statistical comparisons, were left as possible future improvements.
 
-🚧 Strategic Scope & Boundaries (The "Professional Reality" Check)
-Executive Note: In a large scale production environment, a project of this scale would involve months of academic research. To maintain focus on delivering immediate business value and demonstrating pipeline integrity, the following strategic boundaries have been set for this portfolio:
+🕵️ Model Validation and Data Quality
+One of the most useful parts of this project was discovering that the first model results were not reliable.
 
-Focus on Predictive Outcomes: I am prioritising "Deployment Ready" logic over an academic thesis comparing frequentist vs. bayesian statistics.
+The initial model achieved 100% accuracy, which immediately raised a question: was the model actually learning useful patterns, or was something wrong with the data?
 
-Pragmatic Model Selection: While I have selected robust algorithms, I am bypassing exhaustive 'Grid Search' benchmarking to focus on Data Governance and Pipeline Reliability.
+After investigating the features, I identified data leakage. For example, days_since_last_watch was closely related to the target outcome and was allowing the model to obtain information that would not realistically be available at the required prediction stage.
 
-Purpose Driven EDA: Every chart and analysis here is strictly tied to a Business Requirement. I am avoiding "exploration for exploration's sake" to maintain a lean, high impact analytical layer.
+I also found an issue in the original data mapping. Status values from the source CSV files were being interpreted incorrectly during ingestion, which affected the distinction between cancelled and active users.
 
-System Integrity vs. Hyper Tuning: The focus remains on the End-to-End Architecture. Chasing a 0.1% increase in accuracy is deferred in favour of ensuring a "ship shape" data lineage and auditability.
+After correcting the data mapping, isolating the appropriate features and applying class balancing with class_weight='balanced', the model accuracy stabilised at 82.15%.
 
-🕵️‍♂️ Technical Audit & Model Validation (The Real World Baseline)
-Rather than accepting surface level metrics, the validation of our predictive engine involved a rigorous multi stage analytical audit. This architectural journey highlights the transition from an artificial baseline to an honest, deployment ready operational asset.
+For me, this was an important part of the project because it demonstrated that a high accuracy score is not necessarily a good result. Understanding why a model produces a result is just as important as the result itself.
 
-The Overfitting Diagnosis: Initial training cycles yielded a deceptive 100.00% accuracy score. A targeted Feature Importance audit revealed severe Data Leakage, where usage metrics like days_since_last_watch were inadvertently acting as a proxy for the target event itself.
+🏗️ Data Pipeline and Architecture
+The project uses a structured data workflow to separate the original data from the processed datasets.
 
-Target Boundary Contamination: A deep dive metadata inspection exposed that original CSV status strings (Yes/No) were ingested into the data layer as Cancelled and Active. Updating our mapping dictionary unlocked the true dataset structure, preventing structural misclassifications.
+Raw files are kept in the data/ directory, while processed and anonymised datasets are stored in data/processed/.
 
-Stabilised Production Accuracy: By enforcing strict feature isolation and enabling class balancing (class_weight='balanced'), the model was forced to learn from authentic, early stage behavioral signals. The production accuracy successfully stabilised at a robust and market realistic 82.15%.
+This separation makes it easier to understand the data lineage and reproduce the processing steps.
 
-🏗️ Strategic Data Management & Architecture
-For this project, I’ve implemented a professional data pipeline that prioritises efficiency and security:
+I also converted the processed data to Apache Parquet using PyArrow. With approximately 50,000 records, this provided a more efficient format for analytical and machine learning workflows while preserving the dataset schema.
 
-Data Segregation: I’ve opted for a segregated folder structure to maintain a "ship shape" environment. All raw, sensitive files are stored in data/, while the anonymised, production ready outputs are directed to data/processed/. This ensures data lineage remains clear and audit ready.
+🔐 Data Governance and Privacy
+Privacy was also considered as part of the data preparation process.
 
-The Parquet Standard: I transitioned the refined layer to the Apache Parquet format. Dealing with 50,000 records, this is a strategic call: Parquet’s columnar storage is far more nippy for Machine Learning, preserves the schema perfectly, and is significantly lighter on storage.
+Before data reaches the processed stage:
 
-🔐 Data Governance & GDPR Compliance (The "Safe Hands" Protocol)
-To align with UK GDPR standards and ensure enterprise levels of data security, the pipeline implements a strict Anonymisation Layer before any data reaches the 'Processed' stage:
+User_ID values are pseudonymised using SHA-256 hashing.
+Names, email addresses, telephone numbers and addresses are removed.
+Only the behavioural information required for the analysis is retained.
 
-Pseudonymisation: User_ID fields are transformed via SHA-256 Hashing, ensuring unique tracking for ML without exposing real user identities.
+These practices were implemented to reduce the exposure of personally identifiable information and to follow principles aligned with UK GDPR.
 
-PII Scrubbing: All Personally Identifiable Information (Names, Emails, Addresses, Phones) is systematically removed from the refined datasets.
+🛠️ Technology Stack
+Data Processing
+Python
+Pandas
+NumPy
+PyArrow
+Apache Parquet
+Data Analysis and Visualisation
+Plotly
+Seaborn
+Machine Learning
+Scikit-learn
+Random Forest Classification
 
-Data Minimisation: Only behavioural features relevant to Churn and Engagement are retained, ensuring the "Right to Privacy" is upheld while maintaining high-quality predictive signals.
+🚀 Future Improvements
+Possible next steps include:
 
-🛠️ Tech Stack & Methodology
-I've utilised the Python ecosystem to build a solution that is both robust and scalable:
+Further model optimisation and hyperparameter tuning
+Additional evaluation metrics such as precision, recall and ROC-AUC
+Testing alternative machine learning algorithms
+Expanding the retention and engagement analysis
+Improving pipeline monitoring and logging
+Exploring deployment options
 
-Storage & Schema: Apache Parquet & PyArrow
+🧠 What I Learned
+The most important lesson from this project was that building a machine learning model is only one part of the problem.
 
-Analysis & Wrangling: Pandas & NumPy
+The quality of the data, the definition of the target, the features used for prediction and the way the results are validated can have a much greater impact than simply choosing a more sophisticated algorithm.
 
-Strategic Visualisation: Plotly & Seaborn
+The discovery of data leakage was particularly valuable because it forced me to investigate why the model was performing so well instead of simply accepting the initial accuracy score.
 
-Artificial Intelligence: Scikit-Learn (Random Forest Classification models)
+This project helped me strengthen my understanding of data preparation, data quality, machine learning validation, privacy and the importance of building reliable analytical pipelines.
 
 Developed by [Paulo Faria]
 Turning raw data into a "spot of" competitive intelligence.
